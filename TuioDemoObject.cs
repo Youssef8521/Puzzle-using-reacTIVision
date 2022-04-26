@@ -75,15 +75,7 @@ using TUIO;
 
     public void paint(Graphics g)
 	{
-		bool halfl1 = false;
-		bool halfl2 = false;
-
-		int firstl = 0;
-		int secondl = 0;
-		int fullL = 0;
-
-		bool halft1 = false;
-		bool halft2 = false;
+		
 
 		Bitmap lionfh = new Bitmap("LionFirstHalf.jpg");
 		Bitmap lionsh = new Bitmap("LionSecondHalf.jpg");
@@ -98,13 +90,6 @@ using TUIO;
 		int Ypos = (int)(ypos * TuioDemo.height);
 		int size = TuioDemo.height / 10;
 
-		int blueCheck = 0;
-		int redCheck = 0;
-		int yellowCheck = 0;
-		int blackCheck = 0;
-		int brownCheck = 0;
-		int orangeCheck = 0;
-		int greenCheck = 0;
 
 		g.TranslateTransform(Xpos, Ypos);
 		g.RotateTransform((float)(angle / Math.PI * 180.0f));
@@ -115,68 +100,39 @@ using TUIO;
 		if (symbol_id == 0) //first half of the lion
 		{
 
-			lionHalf1 = new Cactor();
-			lionHalf1.x = Xpos;
-			lionHalf1.y = Ypos;
-			lionHalf1.img = lionfh;
-
-			//g.FillRectangle(red, new Rectangle(Xpos - size / 2, Ypos - size / 2, size, size));
 			g.DrawImage(lionfh, new Rectangle(Xpos - size / 2, Ypos - size / 2, size + 50, size + 50));
 			g.TranslateTransform(Xpos, Ypos);
 			g.RotateTransform(-1 * (float)(angle / Math.PI * 180.0f));
 			g.TranslateTransform(-1 * Xpos, -1 * Ypos);
-			Font font = new Font("Arial", 10.0f);
-			//g.DrawString(symbol_id + "", font, blue, new PointF(Xpos - 10, Ypos - 10));
 
-			halfl1 = true;
-			redCheck = 1;
+
 		}
 		if (symbol_id == 1) //second half of the lion
 		{
-
-
-			//g.FillRectangle(yellow, new Rectangle(Xpos - size / 2, Ypos - size / 2, size, size));
 			g.DrawImage(lionsh, new Rectangle(Xpos - size / 2, Ypos - size / 2, size + 50, size + 50));
 			g.TranslateTransform(Xpos, Ypos);
 			g.RotateTransform(-1 * (float)(angle / Math.PI * 180.0f));
 			g.TranslateTransform(-1 * Xpos, -1 * Ypos);
-			Font font = new Font("Arial", 10.0f);
-			//g.DrawString(symbol_id + "", font, blue, new PointF(Xpos - 10, Ypos - 10));
-			halfl2 = true;
-			yellowCheck = 1;
-			
+
 		}
 
 		if (symbol_id == 2) //first half of the tiger
 		{
 
-			tigerHalf1 = new Cactor();
-			tigerHalf1.x = Xpos;
-			tigerHalf1.y = Ypos;
-			tigerHalf1.img = lionsh;
-
-			//g.FillRectangle(blue, new Rectangle(Xpos - size / 2, Ypos - size / 2, size, size));
 			g.DrawImage(tigerfh, new Rectangle(Xpos - size / 2, Ypos - size / 2, size + 50, size + 50));
 			g.TranslateTransform(Xpos, Ypos);
 			g.RotateTransform(-1 * (float)(angle / Math.PI * 180.0f));
 			g.TranslateTransform(-1 * Xpos, -1 * Ypos);
-			Font font = new Font("Arial", 10.0f);
-			//g.DrawString(symbol_id + "", font, blue, new PointF(Xpos - 10, Ypos - 10));
-			halft1 = true;
-			blueCheck = 1;
+
 		}
 
 		if (symbol_id == 3) //second half of the tiger
 		{
 
-			//g.FillRectangle(orange, new Rectangle(Xpos - size / 2, Ypos - size / 2, size, size));
 			g.DrawImage(tigersh, new Rectangle(Xpos - size / 2, Ypos - size / 2, size + 50, size + 50));
 			g.TranslateTransform(Xpos, Ypos);
 			g.RotateTransform(-1 * (float)(angle / Math.PI * 180.0f));
 			g.TranslateTransform(-1 * Xpos, -1 * Ypos);
-			Font font = new Font("Arial", 10.0f);
-			halft2 = true;
-			//g.DrawString(symbol_id + "", font, blue, new PointF(Xpos - 10, Ypos - 10));
 		}
 
 
@@ -186,23 +142,15 @@ using TUIO;
 			g.TranslateTransform(Xpos, Ypos);
 			g.RotateTransform(-1 * (float)(angle / Math.PI * 180.0f));
 			g.TranslateTransform(-1 * Xpos, -1 * Ypos);
-			Font font = new Font("Arial", 10.0f);
-			//g.DrawString(symbol_id + "", font, blue, new PointF(Xpos - 10, Ypos - 10));
+
 		}
-		Cactor fTiger;
+
 		if (symbol_id == 5 ) //full tiger
 		{
-
-			//g.FillRectangle(orange, new Rectangle(Xpos - size / 2, Ypos - size / 2, size, size));
 			g.DrawImage(tiger, new Rectangle(Xpos - size / 2, Ypos - size / 2, size + 50, size + 50));
 			g.TranslateTransform(Xpos, Ypos);
 			g.RotateTransform(-1 * (float)(angle / Math.PI * 180.0f));
 			g.TranslateTransform(-1 * Xpos, -1 * Ypos);
-			Font font = new Font("Arial", 10.0f);
-			//g.DrawString(symbol_id + "", font, blue, new PointF(Xpos - 10, Ypos - 10));
 		}
-
-		
-
 	}
 }

@@ -197,30 +197,68 @@ using TUIO;
 
 			// draw the cursor path
 			if (cursorList.Count > 0) {
- 			 lock(cursorSync) {
-			 foreach (TuioCursor tcur in cursorList.Values) {
-					List<TuioPoint> path = tcur.Path;
-					TuioPoint current_point = path[0];
+ 				 lock(cursorSync) {
+				 foreach (TuioCursor tcur in cursorList.Values) 
+				 {
+						List<TuioPoint> path = tcur.Path;
+						TuioPoint current_point = path[0];
 
-					for (int i = 0; i < path.Count; i++) {
-						TuioPoint next_point = path[i];
-						g.DrawLine(fingerPen, current_point.getScreenX(width), current_point.getScreenY(height), next_point.getScreenX(width), next_point.getScreenY(height));
-						current_point = next_point;
-					}
-					g.FillEllipse(grayBrush, current_point.getScreenX(width) - height / 100, current_point.getScreenY(height) - height / 100, height / 50, height / 50);
-					Font font = new Font("Arial", 10.0f);
-					g.DrawString(tcur.CursorID + "", font, blackBrush, new PointF(tcur.getScreenX(width) - 10, tcur.getScreenY(height) - 10));
-				}
+						for (int i = 0; i < path.Count; i++) {
+							TuioPoint next_point = path[i];
+							g.DrawLine(fingerPen, current_point.getScreenX(width), current_point.getScreenY(height), next_point.getScreenX(width), next_point.getScreenY(height));
+							current_point = next_point;
+						}
+						g.FillEllipse(grayBrush, current_point.getScreenX(width) - height / 100, current_point.getScreenY(height) - height / 100, height / 50, height / 50);
+						Font font = new Font("Arial", 10.0f);
+						g.DrawString(tcur.CursorID + "", font, blackBrush, new PointF(tcur.getScreenX(width) - 10, tcur.getScreenY(height) - 10));
+				 }
 			}
-		 }
+		}
 
 			// draw the objects
 			if (objectList.Count > 0)
 			{
- 				lock(objectSync) {
-				
-				foreach (TuioDemoObject tobject in objectList.Values) {
-						tobject.paint(g);
+ 				lock(objectSync)
+				{
+				bool halfl1 = false;
+				bool halfl2 = false;
+
+				bool halft1 = false;
+				bool halft2 = false;
+
+				foreach (TuioDemoObject tobject in objectList.Values) 
+					{
+
+						
+						if (tobject.SymbolID == 0)
+						{
+							halfl1 = true;
+							tobject.paint(g);
+						}
+						if (tobject.SymbolID == 1)
+						{
+							halfl2 = true;
+							tobject.paint(g);
+						}
+						if (tobject.SymbolID == 2)
+						{
+							halft1 = true;
+							tobject.paint(g);
+						}
+						if (tobject.SymbolID == 3)
+						{
+							halft2 = true;
+							tobject.paint(g);
+						}
+						if(halfl1 == true && halfl2 == true && tobject.SymbolID == 4)
+						{
+							tobject.paint(g);
+						}
+						if (halft1 == true && halft2 == true && tobject.SymbolID == 5)
+						{
+							tobject.paint(g);
+						}
+					//tobject.paint(g);
 					}
 				}
 			}
